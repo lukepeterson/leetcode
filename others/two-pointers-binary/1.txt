@@ -1,0 +1,32 @@
+func longestSubstring(input string) int {
+
+	left := 0
+	right := 0
+	maximumLength := 0
+	currentLength := 0
+
+	//  0101011
+	//l ^
+	//r  ^
+
+	for right < len(input) {
+		// for right := 0; right < len(input); right++ {
+
+		if input[right] == '0' {
+			currentLength++
+		}
+
+		for currentLength > 1 {
+			if input[left] == '0' {
+				currentLength--
+			}
+
+			left++
+		}
+		maximumLength = int(math.Max(float64(maximumLength), float64(right-left+1)))
+
+		right++
+	}
+
+	return maximumLength
+}

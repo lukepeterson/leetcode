@@ -1,0 +1,19 @@
+	left := 0
+	right := 0
+
+	curr := 0
+	ans := 0
+
+	for right < len(nums) {
+
+		curr += nums[right]
+
+		for curr > k {
+			curr -= nums[left]
+			left++
+		}
+
+		ans = int(math.Max(float64(ans), float64(right-left+1)))
+
+		right++
+	}

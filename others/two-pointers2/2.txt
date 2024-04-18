@@ -1,0 +1,24 @@
+
+func longestSubArray(nums []int, k int) int {
+
+	left := 0
+	right := 0
+
+	currentSum := 0
+	maximum := 0
+
+	for right < len(nums) {
+		currentSum += nums[right]
+
+		for currentSum > k {
+			currentSum -= nums[left]
+			left++
+		}
+
+		maximum = int(math.Max(float64(maximum), float64(right-left+1)))
+
+		right++
+	}
+
+	return maximum
+}
