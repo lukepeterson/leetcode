@@ -12,14 +12,10 @@ func prefixSum(input []int) []int {
 	// we would have prefix = [5, 7, 8, 14, 17, 25].
 
 	prefix := []int{input[0]}
-
 	for i := 1; i < len(input); i++ {
-
 		// for each prefix
 		// append the current value + the one before it
-
 		prefix = append(prefix, input[i]+prefix[i-1])
-
 	}
 
 	return prefix
